@@ -1,0 +1,14 @@
+{
+  "name": "pi-vikunja",
+  "version": "0.1.0",
+  "description": "Pi extension: link a pi session to a Vikunja task and post completion comments",
+  "private": true,
+  "type": "module",
+  "keywords": ["pi-package"],
+  "pi": {
+    "extensions": ["./extensions"]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  }
+}
