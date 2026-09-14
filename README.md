@@ -16,6 +16,10 @@ the linked task. The task itself is **not** marked done.
 
 Child sessions spawned via `spawn_session` / `spawn_subsession` inherit the
 parent's link; `/fork` and `/clone` keep it via copied session entries.
+Inheritance keys off the `parentSession` field in the child session file:
+`spawn_subsession` always writes it; `spawn_session` only does on pi-web builds
+that forward `spawningSessionFile` as `parentSession` (older builds skip
+inheritance silently).
 
 ## Install
 

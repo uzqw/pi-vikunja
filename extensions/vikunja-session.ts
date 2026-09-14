@@ -239,6 +239,8 @@ export default function (pi: ExtensionAPI) {
 
   // 子会话（spawn_session / spawn_subsession 创建）从父会话继承 vikunja 绑定：
   // 读父会话文件里最后一条 vikunja-session entry，快照进本会话（clone 语义，之后互不影响）。
+  // 依赖子会话文件头的 parentSession 字段：spawn_subsession 一直会写；
+  // spawn_session 需要 pi-web 侧把 spawningSessionFile 透传为 parentSession（旧版 pi-web 不写，继承静默跳过）。
   // fork/clone 因为整份拷贝了 entries，走不到这里（上面的自己-entry 恢复已命中）。
   async function inheritFromParent(ctx: ExtensionContext, key: string) {
     const parentPath = ctx.sessionManager.getHeader()?.parentSession;
